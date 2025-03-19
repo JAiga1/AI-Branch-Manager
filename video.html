@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #003300, #000000);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .navbar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .video-container {
+            width: 80%;
+            max-width: 500px;
+            height: 280px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            margin-top: 80px;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+        .placeholder-image {
+            position: absolute;
+            width: 50%;
+            max-width: 200px;
+            opacity: 0.5;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .start-button {
+            background: linear-gradient(135deg, #00c853, #009624);
+        }
+        .start-button:hover {
+            background: linear-gradient(135deg, #009624, #00c853);
+        }
+        .end-button {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        }
+        .end-button:hover {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <span class="logo">CrediCare</span>
+        <span>Video Call</span>
+    </div>
+
+    <h1 class="text-2xl font-bold mt-16">Video Call with Bank Manager</h1>
+
+    <div class="video-container">
+        <video id="video" autoplay playsinline></video>
+        <img id="placeholder" class="placeholder-image" src="video.jpg" alt="Bank Manager Image">
+    </div>
+
+    <div class="button-container">
+        <button class="start-button" onclick="startVideoCall()">Start Call</button>
+        <button class="end-button" onclick="endVideoCall()">End Call</button>
+    </div>
+
+    <script>
+        let stream;
+        async function startVideoCall() {
+            const video = document.getElementById('video');
+            const placeholder = document.getElementById('placeholder');
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                video.srcObject = stream;
+                placeholder.style.display = 'none'; // Hide placeholder when video starts
+            } catch (error) {
+                console.error("Error accessing camera/microphone:", error);
+                alert("Could not access camera or microphone.");
+            }
+        }
+
+        function endVideoCall() {
+            const video = document.getElementById('video');
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+            }
+            document.getElementById('placeholder').style.display = 'block'; // Show placeholder when call ends
+        }
+    </script>
+
+</body>
+</html>

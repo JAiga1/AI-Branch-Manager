@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator - CrediCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-green-900 to-blue-900 text-white">
+    <!-- Navbar -->
+    <header class="bg-black bg-opacity-50 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">CrediCare</h1>
+        <nav>
+            <a href="home.html" class="mr-4 hover:text-green-400" id="homeLink">Home</a>
+            <a href="get_started.html" class="hover:text-green-400" id="loginLink">Login</a>
+            <select id="languageToggle" class="ml-4 bg-gray-700 text-white p-1 rounded">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+            </select>
+        </nav>
+    </header>
+
+    <!-- EMI Calculator Section -->
+    <section class="max-w-4xl mx-auto mt-10 p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg">
+        <h2 id="emiCalculatorTitle" class="text-2xl font-bold text-center mb-4">EMI Calculator</h2>
+        <div class="space-y-4">
+            <div>
+                <label id="loanAmountLabel" for="loanAmount" class="block">Loan Amount (₹):</label>
+                <input type="number" id="loanAmount" placeholder="Enter loan amount" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <div>
+                <label id="interestRateLabel" for="interestRate" class="block">Interest Rate (%):</label>
+                <input type="number" id="interestRate" placeholder="Enter interest rate" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <div>
+                <label id="loanTenureLabel" for="loanTenure" class="block">Loan Tenure (months):</label>
+                <input type="number" id="loanTenure" placeholder="Enter loan tenure" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <button onclick="calculateEMI()" id="calculateButton" class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded-lg text-white">Calculate EMI</button>
+            <div class="text-center mt-4">
+                <h3 class="text-xl font-bold"><span id="emiResultLabel">Your EMI:</span> <span id="emiResult" class="text-green-400">₹0.00</span></h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-10 p-4 bg-black bg-opacity-50">
+        <p id="footerText">© 2025 CrediCare. All rights reserved.</p>
+    </footer>
+
+    <!-- Multi-Language Support Script -->
+    <script>
+        const languageTexts = { /* Same language object as before */ };
+        function changeLanguage(lang) {
+            const texts = languageTexts[lang];
+            for (const [key, value] of Object.entries(texts)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = value;
+                }
+            }
+        }
+        document.getElementById("languageToggle").addEventListener("change", function () {
+            const selectedLanguage = this.value;
+            changeLanguage(selectedLanguage);
+            localStorage.setItem("selectedLanguage", selectedLanguage);
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+            changeLanguage(savedLanguage);
+            document.getElementById("languageToggle").value = savedLanguage;
+        });
+
+        function calculateEMI() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const loanTenure = parseFloat(document.getElementById('loanTenure').value);
+
+            if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTenure)) {
+                alert("Please enter valid numbers in all fields.");
+                return;
+            }
+
+            const monthlyInterestRate = (interestRate / 12) / 100;
+            const emi =
+                (loanAmount *
+                    monthlyInterestRate *
+                    Math.pow(1 + monthlyInterestRate, loanTenure)) /
+                (Math.pow(1 + monthlyInterestRate, loanTenure) - 1);
+
+            document.getElementById('emiResult').textContent = `₹${emi.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

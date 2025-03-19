@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - CrediCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #064e3b, #1e40af); /* Green to Blue */
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .get-started-box {
+            background: white;
+            color: black;
+        }
+        .btn-blue {
+            background-color: #1e40af; /* Blue-700 */
+        }
+        .btn-blue:hover {
+            background-color: #1d4ed8; /* Darker Blue */
+        }
+        .btn-green {
+            background-color: #10b981; /* Green-500 */
+        }
+        .btn-green:hover {
+            background-color: #059669; /* Darker Green */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="bg-green-600 text-white p-4 flex justify-between items-center shadow-lg">
+        <h1 class="text-xl font-bold">CrediCare</h1>
+        <nav>
+            <a href="home.html" class="ml-4 hover:underline">Home</a>
+            <a href="login.html" class="ml-4 hover:underline">Login</a>
+            <a href="register.html" class="ml-4 hover:underline">Register</a>
+        </nav>
+    </header>
+
+    <!-- Centered Get Started Box -->
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="get-started-box p-8 rounded-lg shadow-xl w-96 text-center">
+            <h2 class="text-2xl font-bold mb-4">Get Started</h2>
+            <p class="mb-6 text-gray-600">Sign in or create an account to access AI-powered loan assistance.</p>
+            <a href="login.html" class="block w-full btn-blue text-white p-3 rounded-lg mb-3 shadow-md">Login</a>
+            <a href="register.html" class="block w-full btn-green text-white p-3 rounded-lg shadow-md">Register</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-white mt-10 p-6 bg-green-700">
+        <p>© 2025 CrediCare. All rights reserved.</p>
+    </footer>
+</body>
+</html>

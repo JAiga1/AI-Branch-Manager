@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrediCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #064e3b, #1e40af); /* Green to Blue */
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #34d399;
+        }
+        .loan-card {
+            transition: transform 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .loan-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-green-700 text-white p-6 flex justify-between items-center shadow-lg">
+        <h1 class="text-2xl font-bold">CrediCare</h1>
+        <nav class="flex items-center space-x-6">
+            <!-- Video Call Button -->
+            <button id="videoCallButton" class="bg-blue-600 px-3 py-1 rounded-md text-sm flex items-center space-x-1 hover:bg-blue-700 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="white">
+                    <path d="M17 10.5V7c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3.5l4 4v-11l-4 4z"/>
+                </svg>
+                <span>Bank Manager Assistant</span>
+            </button>
+    
+            <script>
+                document.getElementById("videoCallButton").addEventListener("click", function () {
+                    window.location.href = "video.html"; // Redirects to video.html
+                });
+            </script>
+
+            <!-- Navigation Links -->
+            <a href="home.html" class="nav-link text-lg">Home</a>
+            <a href="get_started.html" class="nav-link text-lg">Login</a>
+            <select id="languageToggle" class="bg-green-500 text-white p-2 rounded">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+            </select>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="text-center py-16 bg-gradient-to-r from-green-600 to-blue-700 text-white rounded-lg shadow-md mx-6">
+        <h2 class="text-5xl font-extrabold">Welcome to CrediCare</h2>
+        <p class="text-xl mt-4">Your AI-powered assistant for hassle-free loan applications.</p>
+    </section>
+
+    <!-- Loan Types -->
+    <section class="max-w-6xl mx-auto mt-10 p-8 bg-white rounded-xl shadow-lg text-gray-800">
+        <h2 class="text-3xl font-semibold text-center text-blue-900">Choose a Loan Type</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+            <a href="home-loan.html" class="loan-card p-6 rounded-lg text-center shadow-md text-black">
+                🏠 <span class="block text-lg font-bold mt-2">Home Loan</span>
+            </a>
+            <a href="car-loan.html" class="loan-card p-6 rounded-lg text-center shadow-md text-black">
+                🚗 <span class="block text-lg font-bold mt-2">Car Loan</span>
+            </a>
+            <a href="education-loan.html" class="loan-card p-6 rounded-lg text-center shadow-md text-black">
+                📚 <span class="block text-lg font-bold mt-2">Education Loan</span>
+            </a>
+            <a href="personal-loan.html" class="loan-card p-6 rounded-lg text-center shadow-md text-black">
+                💳 <span class="block text-lg font-bold mt-2">Personal Loan</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- EMI Calculator Button -->
+    <div class="flex justify-center mt-10">
+        <a href="emi_calculator.html" class="bg-blue-700 text-white px-6 py-3 rounded-lg text-lg shadow-lg hover:bg-blue-800">
+            🧮 EMI Calculator
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-white mt-10 p-6 bg-green-700">
+        <p>© 2025 CrediCare. All rights reserved.</p>
+    </footer>
+</body>
+</html>

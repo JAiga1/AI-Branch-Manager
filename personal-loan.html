@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Loan - CrediCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #064e3b, #1e40af);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #34d399;
+        }
+        .loan-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="bg-green-700 text-white p-6 flex justify-between items-center shadow-lg">
+        <h1 class="text-2xl font-bold">CrediCare</h1>
+        <nav class="space-x-6">
+            <a href="home.html" class="nav-link text-lg">Home</a>
+            <a href="get_started.html" class="nav-link text-lg">Login</a>
+            <select id="languageToggle" class="bg-green-500 text-white p-2 rounded">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="ta">தமிழ் (Tamil)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+            </select>
+        </nav>
+    </header>
+
+    <!-- Personal Loan Section -->
+    <section class="max-w-4xl mx-auto mt-10 p-8 loan-container rounded-lg shadow-lg">
+        <h2 id="personalLoanTitle" class="text-3xl font-bold text-center">Personal Loan</h2>
+        <p id="personalLoanSubtitle" class="text-lg text-center mt-2">Apply for a personal loan to meet your financial needs.</p>
+        <div class="space-y-6 mt-6">
+            <div>
+                <label id="loanAmountLabel" for="loanAmount" class="block">Loan Amount (₹):</label>
+                <input type="number" id="loanAmount" placeholder="Enter loan amount" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <div>
+                <label id="interestRateLabel" for="interestRate" class="block">Interest Rate (%):</label>
+                <input type="number" id="interestRate" placeholder="Enter interest rate" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <div>
+                <label id="loanTenureLabel" for="loanTenure" class="block">Loan Tenure (months):</label>
+                <input type="number" id="loanTenure" placeholder="Enter loan tenure" class="w-full p-3 bg-white text-black border rounded-lg">
+            </div>
+            <button id="applyButton" class="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">
+                Apply Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center mt-10 p-6 bg-green-700">
+        <p id="footerText">© 2025 CrediCare. All rights reserved.</p>
+    </footer>
+
+    <!-- Multi-Language Support Script -->
+    <script>
+        const languageTexts = {
+            en: {
+                personalLoanTitle: "Personal Loan",
+                personalLoanSubtitle: "Apply for a personal loan to meet your financial needs.",
+                loanAmountLabel: "Loan Amount (₹):",
+                interestRateLabel: "Interest Rate (%):",
+                loanTenureLabel: "Loan Tenure (months):",
+                applyButton: "Apply Now",
+                footerText: "© 2025 CrediCare. All rights reserved.",
+            },
+            hi: {
+                personalLoanTitle: "पर्सनल लोन",
+                personalLoanSubtitle: "अपने वित्तीय आवश्यकताओं को पूरा करने के लिए पर्सनल लोन के लिए आवेदन करें।",
+                loanAmountLabel: "ऋण राशि (₹):",
+                interestRateLabel: "ब्याज दर (%):",
+                loanTenureLabel: "ऋण अवधि (महीने):",
+                applyButton: "अभी आवेदन करें",
+                footerText: "© 2025 AI ब्रांच मैनेजर। सर्वाधिकार सुरक्षित।",
+            },
+            ta: {
+                personalLoanTitle: "தனிப்பட்ட கடன்",
+                personalLoanSubtitle: "உங்கள் நிதி தேவைகளுக்காக தனிப்பட்ட கடனுக்கு விண்ணப்பிக்கவும்.",
+                loanAmountLabel: "கடன் தொகை (₹):",
+                interestRateLabel: "வட்டி விகிதம் (%):",
+                loanTenureLabel: "கடன் காலம் (மாதங்கள்):",
+                applyButton: "இப்போது விண்ணப்பிக்கவும்",
+                footerText: "© 2025 AI பிராஞ்ச் மேலாளர். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+            },
+            te: {
+                personalLoanTitle: "పర్సనల్ లోన్",
+                personalLoanSubtitle: "మీ ఆర్థిక అవసరాలకు అనుగుణంగా పర్సనల్ లోన్ కోసం దరఖాస్తు చేయండి.",
+                loanAmountLabel: "లోన్ మొత్తం (₹):",
+                interestRateLabel: "వడ్డీ రేటు (%):",
+                loanTenureLabel: "లోన్ కాలం (నెలలు):",
+                applyButton: "ఇప్పుడు దరఖాస్తు చేసుకోండి",
+                footerText: "© 2025 AI బ్రాంచ్ మేనేజర్. అన్ని హక్కులు ప్రత్యేకించబడినవి.",
+            },
+        };
+
+        function changeLanguage(lang) {
+            const texts = languageTexts[lang];
+            for (const [key, value] of Object.entries(texts)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = value;
+                }
+            }
+        }
+
+        document.getElementById("languageToggle").addEventListener("change", function () {
+            const selectedLanguage = this.value;
+            changeLanguage(selectedLanguage);
+            localStorage.setItem("selectedLanguage", selectedLanguage);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+            changeLanguage(savedLanguage);
+            document.getElementById("languageToggle").value = savedLanguage;
+        });
+    </script>
+</body>
+</html>
