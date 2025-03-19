@@ -8,7 +8,7 @@ AI Branch Manager is a multilingual web-based application designed to assist use
 - 🏠 **Loan Options:** Users can choose from Home Loan, Car Loan, Education Loan, and Personal Loan.
 - 🧮 **EMI Calculator:** Helps users estimate their loan repayments.
 - 📹 **Video Call Support:** Users can start a video call with an AI agent.
-- 🎨 **Responsive UI:** Designed using html and css a seamless experience.
+- 🎨 **Responsive UI:** Designed using Tailwind CSS for a seamless experience.
 
 ## Pages Included
 - `index.html` - Home Page
@@ -19,7 +19,30 @@ AI Branch Manager is a multilingual web-based application designed to assist use
 - `emi_calculator.html` - EMI Calculator Page
 - `get_started.html` - Login/Registration Page
 
+## Implementation Screenshots
+
+### Home Page
+![Home Page](HOME.jpg)
+
+### Home Loan Page
+![Home Loan](HOMELOAN.jpg)
+
+### EMI Calculator
+![EMI Calculator](EMICALCULATOR.jpg)
+
+### Login Page
+![Login](LOGIN.jpg)
+
+### Register Page
+![Register](REGISTER.jpg)
+
+### Multi-language Support
+![Multi-language Support](MULTILANGUAGESUPPORT.jpg)
+
+### Video Call Feature
+![Video Call](VIDEOCALL.jpg)
+
 ## Installation & Usage
 1. **Clone the repository:**
-   git https://github.com/Jebin-Santhosh/AI-Branch-Manager
-
+   ```sh
+   git clone https://github.com/Jebin-Santhosh/AI-Branch-Manager.git
